@@ -5,7 +5,9 @@
 package com.example.demo.config;
 
 import com.example.demo.services.TestServices;
+import com.example.demo.services.UserService;
 import java.util.Random;
+import javax.inject.Singleton;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -27,5 +29,11 @@ public class AutowiringConfig {
     @RequestScope
     public TestServices getTestServices() {
         return new TestServices(new Random().nextInt(50));
+    }
+    
+    @Bean
+    @Singleton
+    public UserService getUserService() {
+        return new UserService();
     }
 }
